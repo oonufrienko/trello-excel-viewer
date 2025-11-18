@@ -133,14 +133,6 @@
     };
   }
 
-  function handleShowAttachmentView(tInstance, options) {
-    const attachment = options.attachment || options;
-    if (!isExcelAttachment(attachment)) {
-      return null;
-    }
-    return openExcelModal(tInstance, attachment, options);
-  }
-
   function handleAttachmentThumbnail(tInstance, options) {
     const attachment = options.attachment || options;
     if (!isExcelAttachment(attachment)) {
@@ -151,7 +143,6 @@
 
   t.initialize(
     {
-      'show-attachment-view': handleShowAttachmentView,
       'attachment-thumbnail': handleAttachmentThumbnail
     },
     {
