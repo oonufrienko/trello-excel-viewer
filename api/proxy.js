@@ -52,9 +52,12 @@ export default async function handler(req, res) {
 
   const trelloKey = process.env.TRELLO_API_KEY;
   const trelloToken = process.env.TRELLO_TOKEN;
+  const trelloAppName = process.env.TRELLO_APP_NAME || 'Excel Viewer Power-Up';
   if (trelloKey && trelloToken && /trello\.(com|net)$/i.test(parsed.hostname)) {
     parsed.searchParams.set('key', trelloKey);
     parsed.searchParams.set('token', trelloToken);
+    parsed.searchParams.set('appKey', trelloKey);
+    parsed.searchParams.set('appName', trelloAppName);
   }
 
   try {
