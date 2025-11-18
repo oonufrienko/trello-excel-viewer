@@ -3,7 +3,7 @@
   "capabilities": [
     "attachment-thumbnail"
   ],
-  "iframeConnectorUrl": "https://oonufrienko.github.io/trello-excel-viewer/connector.html"
+  "iframeConnectorUrl": "https://oonufrienko.github.io/trello-excel-viewer/public/index.html"
 }
 
 
