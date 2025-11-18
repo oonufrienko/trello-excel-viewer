@@ -12,6 +12,10 @@
     {
       "id": "attachment-thumbnail",
       "url": "./index.html"
+    },
+    {
+      "id": "show-attachment-view",
+      "url": "./index.html"
     }
   ],
   "connectors": {},
