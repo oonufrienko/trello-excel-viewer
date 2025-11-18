@@ -1,8 +1,7 @@
 {
   "connectors": {},
   "capabilities": [
-    "attachment-thumbnail",
-    "show-attachment-view"
+    "attachment-thumbnail"
   ],
   "iframeConnectorUrl": "https://oonufrienko.github.io/trello-excel-viewer/connector.html"
 }

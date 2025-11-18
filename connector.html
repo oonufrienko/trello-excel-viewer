@@ -43,25 +43,7 @@
 
     // Main initialization for Trello Power-Up
     TrelloPowerUp.initialize({
-      // 1) Override default attachment view when user clicks on an attachment
-      "show-attachment-view": function (t, options) {
-        const url = options.url || "";
-        if (!isExcelUrl(url)) {
-          // Not an Excel file – let Trello handle it normally
-          return t.closeModal();
-        }
-
-        return t.modal({
-          url: "https://oonufrienko.github.io/trello-excel-viewer/viewer.html",
-          fullscreen: true,
-          title: options.name || "Excel preview",
-          args: {
-            fileUrl: url
-          }
-        });
-      },
-
-      // 2) Optional: add a custom thumbnail button for Excel attachments
+      // Add a custom thumbnail button for Excel attachments
       "attachment-thumbnail": function (t, options) {
         const url = options.url || "";
         if (!isExcelUrl(url)) {
