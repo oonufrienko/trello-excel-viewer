@@ -124,21 +124,26 @@
 
   function buildThumbnailResponse(tInstance, attachment) {
     return {
-      title: 'Preview Excel',
+      title: 'Excel preview',
+      subtitle: 'Open without downloading',
       url: attachment.url,
-      icon: './assets/excel-icon.svg',
+      icon: {
+        url: './assets/excel-icon.svg'
+      },
+      openText: 'Excel preview',
+      actions: [
+        {
+          icon: './assets/excel-icon.svg',
+          text: 'Excel preview',
+          callback: function () {
+            return openExcelModal(tInstance, attachment);
+          }
+        }
+      ],
       callback: function () {
         return openExcelModal(tInstance, attachment);
       }
     };
-  }
-
-  function handleShowAttachmentView(tInstance, options) {
-    const attachment = options.attachment || options;
-    if (!isExcelAttachment(attachment)) {
-      return null;
-    }
-    return openExcelModal(tInstance, attachment, options);
   }
 
   function handleAttachmentThumbnail(tInstance, options) {
@@ -151,7 +156,6 @@
 
   t.initialize(
     {
-      'show-attachment-view': handleShowAttachmentView,
       'attachment-thumbnail': handleAttachmentThumbnail
     },
     {
