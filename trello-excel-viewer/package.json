@@ -1,0 +1,8 @@
+{
+  "name": "trello-excel-viewer-powerup",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "lint": "echo 'no linting configured'"
+  }
+}

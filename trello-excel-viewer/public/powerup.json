@@ -1,0 +1,23 @@
+{
+  "name": "Excel Viewer Power-Up",
+  "appKey": "eaa6d0d7c57218139af1b772bbd777cb",
+  "description": "Preview Trello Excel attachments in a modal using Microsoft Office or Google Docs viewers.",
+  "details": "Adds native-style previews when clicking .xls/.xlsx attachments.",
+  "homepage": "https://github.com/oonufrienko/trello-excel-viewer",
+  "author": "alexon",
+  "icon": {
+    "url": "./assets/excel-icon.svg"
+  },
+  "capabilities": [
+    {
+      "id": "attachment-thumbnail",
+      "url": "./index.html"
+    },
+    {
+      "id": "show-attachment-view",
+      "url": "./index.html"
+    }
+  ],
+  "connectors": {},
+  "iframeConnectorUrl": "./index.html"
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Excel Preview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #f4f5f7;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    #container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    #header {
+      padding: 8px 12px;
+      background: #ffffff;
+      border-bottom: 1px solid #dfe1e6;
+      font-size: 14px;
+      color: #5e6c84;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      z-index: 2;
+    }
+    #header span {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      max-width: 80%;
+    }
+    #frame-wrapper {
+      flex: 1;
+      position: relative;
+    }
+    #excelFrame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #ffffff;
+    }
+    #error {
+      padding: 16px;
+      color: #b04632;
+      display: none;
+      font-size: 14px;
+    }
+  </style>
+  <script src="https://p.trellocdn.com/power-up.min.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <span id="fileName">Opening Excel file…</span>
+    </div>
+    <div id="frame-wrapper">
+      <iframe id="excelFrame"></iframe>
+      <div id="error"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var t = window.TrelloPowerUp.iframe();
+
+      var fileUrl = t.arg("fileUrl");
+      var fileName = "Excel file";
+      try {
+        var urlObj = new URL(fileUrl);
+        var pathSegments = urlObj.pathname.split("/");
+        fileName = decodeURIComponent(pathSegments[pathSegments.length - 1]) || fileName;
+      } catch (e) {
+        // ignore, fallback to default name
+      }
+
+      document.getElementById("fileName").textContent = fileName;
+
+      if (!fileUrl) {
+        var errorEl = document.getElementById("error");
+        errorEl.style.display = "block";
+        errorEl.textContent = "Could not get Excel file URL.";
+        return;
+      }
+
+      var officeViewerUrl =
+        "https://view.officeapps.live.com/op/embed.aspx?src=" +
+        encodeURIComponent(fileUrl);
+
+      document.getElementById("excelFrame").src = officeViewerUrl;
+    })();
+  </script>
+</body>
+</html>
+
+

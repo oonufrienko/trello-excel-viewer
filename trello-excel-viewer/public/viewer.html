@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Excel Attachment Preview</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="viewer">
+    <div class="viewer-shell" id="viewerShell">
+      <header class="viewer-shell__toolbar">
+        <div class="viewer-shell__meta">
+          <p class="viewer-shell__title" id="viewerTitle">Excel preview</p>
+          <span class="viewer-shell__provider" id="viewerProvider">Loading viewer…</span>
+        </div>
+        <div class="viewer-shell__actions">
+          <button class="viewer-shell__button" id="openInNewTab">Open original</button>
+          <button class="viewer-shell__button viewer-shell__button--primary" id="refreshViewer">Reload</button>
+        </div>
+      </header>
+      <section class="viewer-shell__body">
+        <iframe title="Excel preview" class="viewer-shell__frame" id="viewerFrame" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+        <div class="viewer-shell__status" id="viewerStatus">
+          <div class="spinner" aria-hidden="true"></div>
+          <div>
+            <p id="statusHeadline">Preparing preview…</p>
+            <p id="statusSubline">This can take a few seconds for larger workbooks.</p>
+            <button class="viewer-shell__button" id="useFallback">Try fallback viewer</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="https://p.trellocdn.com/power-up.min.js" crossorigin="anonymous"></script>
+    <script src="./viewer.js"></script>
+  </body>
+</html>
