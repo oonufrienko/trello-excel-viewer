@@ -46,7 +46,11 @@ export default async function handler(req, res) {
 
   const isAllowedHost = ALLOWED_HOSTS.some((regex) => regex.test(parsed.hostname));
   if (!isAllowedHost) {
-    res.status(403).json({ error: 'Blocked host' });
+    res.status(403).json({ 
+      error: 'Blocked host',
+      hostname: parsed.hostname,
+      allowedHosts: ALLOWED_HOSTS.map(r => r.toString())
+    });
     return;
   }
 
